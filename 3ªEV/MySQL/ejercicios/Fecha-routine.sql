@@ -1,0 +1,4 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Fecha`()
+BEGIN
+	SELECT CURDATE(), RAND();
+END

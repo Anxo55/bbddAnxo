@@ -1,0 +1,1 @@
+call StockCategoria(1);
