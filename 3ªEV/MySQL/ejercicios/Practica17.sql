@@ -1,0 +1,1 @@
+CALL mostrarNproductos(6);

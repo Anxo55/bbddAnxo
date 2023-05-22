@@ -1,0 +1,26 @@
+22/05/2023
+
+BBDD: Continuacion con los apuntes de la ud14, empezamos con la sentenica CASE,al fijarnos en las funciones, primero la llamamos y despues ponemos
+el tipo(precio DOUBLE, Iva INT).
+
+SENTENCIA CASE
+	Function: Impuestos
+	Practica15, practica16
+
+SENTENCIA LOOP: La sentencia LOOP nos permite definir un bucle para repetir una serie de sentencias 
+hasta que decidamos salir del bucle con la sentencia LEAVE.
+
+
+SENTENCIA ITERATE: Esta sentencia indica el reinicio de un bucle. Puede aparecer dentro de bloques 
+LOOP, REPEAT y WHILE.
+
+SENTENCIA REPEAT: Esta sentencia repite el bloque hasta que se cumpla la condición.
+	Procedure: mostrarNprodctos, factorial
+	Practica17, Practica18
+	
+
+SENTENCIA WHILE: Esta sentencia repite el bloque mientras que se cumpla la condición.
+	Procedure: factorialWhile
+	Practica19
+
+EjemploBucles en ECLIPSE

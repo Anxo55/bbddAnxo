@@ -1,0 +1,1 @@
+SELECT factorialWhile(5)
