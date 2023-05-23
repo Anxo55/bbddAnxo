@@ -1,0 +1,17 @@
+23/05/2023
+
+BBDD: Pag 29 
+
+CURSORES: Un cursor se asocia con un conjunto de filas o una consulta sobre una tabla de una 
+base de datos.
+
+Open: inicializa el conjunto de resultados asociados con el cursor. Un cursor ya 
+declarado se abre con la siguiente sintaxis:
+
+Etiqueta: REPEAT
+33
+FETCH CuCategoria1 INTO PNombre, PCategoria, PVentas;
+INSERT INTO empleadoscategoria (nombre, categoria, ventas) VALUES 
+(PNombre, PCategoria, PVentas);
+SET Contador = Contador + 1;
+UNTIL UltimaFila
