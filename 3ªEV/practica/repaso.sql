@@ -106,20 +106,29 @@ EXEC CalcularVentasPorMes
 
 /*7 Crea un cursor que recorra la tabla de productos y actualice el precio de cada producto un 10%*/
 
-DECLARE producto_id INT;
-DECLARE producto_precio DECIMAL(10,2);
-DECLARE fin_cursor INT DEFAULT 0;
-DECLARE productos_cursor CURSOR FOR SELECT ProductID, UnitPrice FROM products;
-DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin_cursor = 1;
-OPEN productos_cursor;
-bucle_productos: LOOP
-  FETCH productos_cursor INTO producto_id, producto_precio;
-  IF fin_cursor = 1 THEN
-    LEAVE bucle_productos;
-  END IF;
-  UPDATE products SET UnitPrice = producto_precio * 1.1 WHERE ProductID = producto_id;
-END LOOP;
-CLOSE productos_cursor;
+DECLARE @productoID INT
+DECLARE @nuevoPrecio MONEY
+
+DECLARE cursorProductos CURSOR FOR
+SELECT ProductID, UnitPrice
+FROM Products
+
+OPEN cursorProductos
+
+FETCH NEXT FROM cursorProductos INTO @productoID, @nuevoPrecio
+WHILE @@FETCH_STATUS = 0
+BEGIN
+  SET @nuevoPrecio = @nuevoPrecio * 1.1 -- Aumenta el precio en un 10%
+
+  UPDATE Products
+  SET UnitPrice = @nuevoPrecio
+  WHERE ProductID = @productoID
+
+  FETCH NEXT FROM cursorProductos INTO @productoID, @nuevoPrecio
+END
+
+CLOSE cursorProductos
+DEALLOCATE cursorProductos
 
 
 
