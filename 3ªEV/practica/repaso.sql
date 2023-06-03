@@ -26,7 +26,7 @@ EXEC ObtenerNombreCliente @id = 1, @nombreCliente = @nombreCliente OUTPUT
 SELECT @nombreCliente
 
 /*3 Crea una funcion que reciba un parametro de entrada que es el id del producto y devuelva el numero de unidades vendidas
-de ese producto*/
+de ese producto (NO SALIO)*/
 
 CREATE FUNCTION obtener_unidades_vendidas_producto(id INT) RETURNS INT
 BEGIN
@@ -106,30 +106,24 @@ EXEC CalcularVentasPorMes
 
 /*7 Crea un cursor que recorra la tabla de productos y actualice el precio de cada producto un 10%*/
 
-DECLARE @productoID INT
-DECLARE @nuevoPrecio MONEY
+DECLARE @ProductId INT
+DECLARE @Price MONEY
 
-DECLARE cursorProductos CURSOR FOR
-SELECT ProductID, UnitPrice
-FROM Products
+DECLARE ProductCursor CURSOR FOR
+SELECT ProductID, UnitPrice FROM Products
 
-OPEN cursorProductos
+OPEN ProductCursor
 
-FETCH NEXT FROM cursorProductos INTO @productoID, @nuevoPrecio
+FETCH NEXT FROM ProductCursor INTO @ProductId, @Price
+
 WHILE @@FETCH_STATUS = 0
 BEGIN
-  SET @nuevoPrecio = @nuevoPrecio * 1.1 -- Aumenta el precio en un 10%
-
-  UPDATE Products
-  SET UnitPrice = @nuevoPrecio
-  WHERE ProductID = @productoID
-
-  FETCH NEXT FROM cursorProductos INTO @productoID, @nuevoPrecio
+    UPDATE Products SET UnitPrice = @Price * 1.1 WHERE ProductID = @ProductId
+    FETCH NEXT FROM ProductCursor INTO @ProductId, @Price
 END
 
-CLOSE cursorProductos
-DEALLOCATE cursorProductos
-
+CLOSE ProductCursor
+DEALLOCATE ProductCursor
 
 
 
