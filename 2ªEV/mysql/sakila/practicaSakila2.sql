@@ -17,6 +17,7 @@ GROUP BY co.country_id
 ORDER BY 2 DESC
 LIMIT 10;
 
+
 #4 
 
 SELECT f.title,COUNT(i.inventory_id) AS "Núm copias"
